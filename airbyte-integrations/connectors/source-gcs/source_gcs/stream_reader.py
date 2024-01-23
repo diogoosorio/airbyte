@@ -69,6 +69,7 @@ class SourceGCSStreamReader(AbstractFileBasedStreamReader):
             )
             prefixes = [prefix] if prefix else self.get_prefixes_from_globs(globs or [])
             globs = globs or [None]
+            prefixes = prefixes or [None]
 
             for prefix, glob in itertools.product(prefixes, globs):
                 bucket = self.gcs_client.get_bucket(self.config.bucket)
